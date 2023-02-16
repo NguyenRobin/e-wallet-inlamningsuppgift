@@ -1,0 +1,53 @@
+.form-section {
+  margin: auto 0 4.5rem 0;
+  width: 100%;
+  font-family: 'PT Mono';
+  font-size: 1.5rem;
+  color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 0;
+}
+
+.form-card-number,
+.form-cardholder,
+.form-vendors,
+.form-card-valid,
+.form-card-CCV {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+label {
+  font-size: 1.2rem;
+}
+.form-card-number input,
+.form-cardholder input,
+.form-card-valid input,
+.form-card-CCV input,
+.form-vendors select {
+  height: 5.6rem;
+  border-radius: 8px;
+  padding: 1rem;
+  font-size: 1.8rem;
+  font-family: 'PT Mono';
+}
+
+.form__valid-ccv {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-card-valid input,
+.form-card-CCV input {
+  width: 17rem;
+}
+
+.form-card-CCV input {
+}
+
+.form-vendors {
+  margin-bottom: 4rem;
+}

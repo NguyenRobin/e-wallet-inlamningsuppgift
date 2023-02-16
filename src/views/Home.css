@@ -1,0 +1,21 @@
+.home {
+  width: 41.5rem;
+  height: 86rem;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  font-family: 'Source Sans Pro';
+  /* display: flex;
+  flex-direction: column;
+  justify-content: space-evenly; */
+}
+
+.home > .card-wallet {
+  margin: auto;
+}
+
+.home button {
+  margin-top: auto;
+}

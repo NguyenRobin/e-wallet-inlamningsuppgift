@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Mono&display=swap');
+
+.card {
+  /* border: 2px solid black; */
+  width: 38rem;
+  height: 24rem;
+  border-radius: 8px;
+  background-color: #ffae34;
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);
+  padding: 1.7rem;
+  font-family: 'PT mono';
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  top: 0;
+  left: 0;
+}
+
+.card-symbols {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0;
+}
+
+.card-chip {
+}
+
+.card-holder__section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.card-number {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-number h2 {
+  font-size: 3rem;
+  line-height: 3.2rem;
+  font-weight: lighter;
+}
+
+.card-holder__title {
+  margin-bottom: 0.5rem;
+  gap: 2rem;
+}
+.card-holder__title,
+.card-holder__customer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-holder__title p {
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.card-holder__customer p {
+  font-size: 1.8rem;
+  color: rgba(0, 0, 0, 1);
+}
+
+/* .card-wallet .card {
+  position: absolute;
+} */
+
+/* .card-wallet .card:nth-child(1) {
+  transform: translateY(-40%);
+}
+.card-wallet .card:nth-child(2) {
+  transform: translateY(-20%);
+} */
+
+.card {
+  /* margin-bottom: 8rem; */
+}

@@ -1,0 +1,17 @@
+.card-wallet {
+  position: relative;
+  /* margin: auto 0 4.5rem 0; */
+  width: 38rem;
+  height: 24rem;
+}
+
+.card-wallet .card {
+  position: absolute;
+}
+
+.card-wallet .card:nth-child(1) {
+  /* transform: translateY(-40%); */
+}
+.card-wallet .card:nth-child(2) {
+  /* transform: translateY(-20%); */
+}
