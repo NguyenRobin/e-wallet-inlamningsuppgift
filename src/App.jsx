@@ -6,7 +6,6 @@ import AddCard from './views/AddCard';
 
 function App() {
   const [wallet, setWallet] = useState(cards);
-  console.log(wallet);
 
   function addCard(card) {
     // setWallet([card, ...wallet]);

@@ -23,9 +23,6 @@
   margin-bottom: 0;
 }
 
-.card-chip {
-}
-
 .card-holder__section {
   display: flex;
   flex-direction: column;
@@ -37,6 +34,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  color: #000;
 }
 
 .card-number h2 {
@@ -74,7 +72,9 @@
 .card-wallet .card:nth-child(2) {
   transform: translateY(-20%);
 } */
-
-.card {
-  /* margin-bottom: 8rem; */
+.card-number,
+.card-holder__section,
+.card-holder__information p,
+.card-holder__customer p {
+  color: #fff;
 }

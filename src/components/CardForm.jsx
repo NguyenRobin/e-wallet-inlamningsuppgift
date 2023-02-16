@@ -6,7 +6,11 @@ function CardForm({
   addCard,
   changeCardHandler,
   changeBackgroundCard,
-  changeChip,
+  vendorLogo,
+  background,
+  chip,
+  wifi,
+  textColor,
 }) {
   const [cardNumber, setCardNumber] = useState('');
   const [cardHolder, setCardHolder] = useState('');
@@ -33,7 +37,6 @@ function CardForm({
   function vendorHandler(event) {
     setVendor(event.target.value);
     changeCardHandler(event.target.value);
-    console.log(event.target.value);
     changeBackgroundCard(event.target.value);
   }
 
@@ -47,11 +50,11 @@ function CardForm({
       CCV: CCV,
       vendor: vendor,
       images: {
-        wifi: 'public/images/noun_wifi_159786 2.svg',
-        chip: 'public/images/chip.svg',
-        vendors: './public/images/vendor-blockchain.svg',
+        wifi: `public/images/noun_wifi_159786 ${wifi}.svg`,
+        chip: `public/images/${chip}.svg`,
+        vendors: `./public/images/vendor-${vendorLogo}.svg`,
       },
-      cardColor: '#8B58F9',
+      cardColor: background,
     };
     addCard(newCard);
     console.log(newCard);

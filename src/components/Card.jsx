@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Card.css';
 function Card({
   wifiLogo,
@@ -10,11 +10,17 @@ function Card({
   cardColor,
   index,
   transformY,
+  textColor,
+  onClick,
 }) {
   return (
     <article
+      onClick={onClick}
       className="card"
-      style={{ backgroundColor: cardColor, transform: transformY }}
+      style={{
+        backgroundColor: cardColor,
+        transform: transformY,
+      }}
     >
       <section className="card-symbols">
         <img src={wifiLogo} alt="Wi-fi" />
@@ -26,18 +32,21 @@ function Card({
       </section>
 
       <section className="card-holder__section">
-        <section className="card-number">
+        <section className="card-number" style={{ color: textColor }}>
           <h2>{cardNumber}</h2>
         </section>
 
         <section className="card-holder__information">
           <section className="card-holder__title">
-            <p>CARDHOLDER NAME</p>
-            <p>VALID THRU</p>
+            <p style={{ color: textColor }}>CARDHOLDER NAME</p>
+            <p style={{ color: textColor }}>VALID THRU</p>
           </section>
-          <section className="card-holder__customer">
-            <p>{name}</p>
-            <p>{valid}</p>
+          <section
+            className="card-holder__customer"
+            style={{ color: textColor }}
+          >
+            <p style={{ color: textColor }}>{name}</p>
+            <p style={{ color: textColor }}>{valid}</p>
           </section>
         </section>
       </section>

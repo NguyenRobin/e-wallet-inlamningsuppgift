@@ -30,7 +30,7 @@ const cards = [
       chip: 'public/images/chip.svg',
       vendors: './public/images/vendor-evil.svg',
     },
-    cardNumber: '6666 6666 6666 666',
+    cardNumber: '6666 6666 6666 6666',
     cardColor: '#F33355',
   },
 ];
