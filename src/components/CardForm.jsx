@@ -3,9 +3,9 @@ import './CardForm.css';
 import Button from './Button';
 
 function CardForm({
-  addCard,
+  addCardToWallet,
   changeCardHandler,
-  changeBackgroundCard,
+  switchCard,
   vendorLogo,
   background,
   chip,
@@ -18,7 +18,17 @@ function CardForm({
   const [CCV, setCCV] = useState('');
   const [vendor, setVendor] = useState('');
 
+  function checkCardNumberIsValid(event) {
+    console.log(event);
+  }
   function cardNumberHandler(event) {
+    // const enteredNumber = event.target.value;
+    // const checkEveryFourthCharacter = enteredNumber.match(/.{1,4}/g);
+    // const correctFormat = checkEveryFourthCharacter
+    //   ? checkEveryFourthCharacter.join('hoea ')
+    //   : enteredNumber;
+    // const chunks = splitTest.match(/.{1,4}/g); // break into four-digit chunks
+    // const formattedValue = chunks ? chunks.join(' ') : splitTest;
     setCardNumber(event.target.value);
   }
 
@@ -27,7 +37,10 @@ function CardForm({
   }
 
   function validDateHandler(event) {
-    setValidDate(event.target.value);
+    if (event.target.value.length > 1 && event.target.value.length <= 2) {
+      // event.target.value += '/';
+      setValidDate(event.target.value + '/');
+    }
   }
 
   function CCVHandler(event) {
@@ -37,7 +50,7 @@ function CardForm({
   function vendorHandler(event) {
     setVendor(event.target.value);
     changeCardHandler(event.target.value);
-    changeBackgroundCard(event.target.value);
+    switchCard(event.target.value);
   }
 
   function submitHandler(event) {
@@ -55,7 +68,8 @@ function CardForm({
       },
       cardColor: background,
     };
-    addCard(newCard);
+    addCardToWallet(newCard);
+    setCardNumber('');
     console.log(newCard);
   }
 
@@ -65,11 +79,12 @@ function CardForm({
         <label htmlFor="text">CARD NUMBER</label>
         <input
           onChange={cardNumberHandler}
-          value={cardNumber}
+          value={cardNumber.split('-').join()}
           placeholder="1234 5676 9101 1123"
           type="text"
-          minLength="16"
-          maxLength="16"
+          // minLength="16"
+          maxLength="20"
+          pattern="[0-9]*"
         />
       </section>
 

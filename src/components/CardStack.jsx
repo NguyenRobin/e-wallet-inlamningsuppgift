@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import Card from './Card';
 import './CardStack.css';
 
-function CardStack({ cards, activeCard }) {
+function CardStack({ myWalletWithCards, activeCard }) {
   return (
     <section className="card-wallet">
-      {cards.map((card, index) => (
+      {myWalletWithCards.map((card, index) => (
         <Card
           // onClick={() => clickedCard(card)}
           onClick={() => activeCard(card)}
@@ -20,9 +20,9 @@ function CardStack({ cards, activeCard }) {
           cardColor={card.cardColor}
           index={index}
           transformY={`translateY(${
-            cards.length <= 3
+            myWalletWithCards.length <= 3
               ? index * 20
-              : cards.length <= 6
+              : myWalletWithCards.length <= 6
               ? index * 10
               : index * 5
           }%`}

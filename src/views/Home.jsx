@@ -5,9 +5,9 @@ import Card from '../components/Card';
 import CardStack from '../components/CardStack';
 import Button from '../components/Button';
 
-function Home({ cards }) {
+function Home({ myWalletWithCards, removeCardFromWallet, deleteCard }) {
   const [textColor, setTextColor] = useState('#000');
-  const [myCard, setMyCard] = useState(cards);
+  const [myCard, setMyCard] = useState(myWalletWithCards);
 
   function activeCard(card) {
     setMyCard(card);
@@ -19,6 +19,8 @@ function Home({ cards }) {
       <Top title="E-WALLET" type="ACTIVE CARD" />
       <Card
         // textColor={textColor}
+        deleteCard={() => deleteCard(true)}
+        onClick={() => removeCardFromWallet(myCard.id)}
         wifiLogo={myCard.images?.wifi}
         vendorsLogo={myCard.images?.vendors}
         chipLogo={myCard.images?.chip}
@@ -28,7 +30,11 @@ function Home({ cards }) {
         valid={myCard.valid}
         cardColor={myCard.cardColor}
       />
-      <CardStack activeCard={activeCard} textColor={textColor} cards={cards} />
+      <CardStack
+        activeCard={activeCard}
+        textColor={textColor}
+        myWalletWithCards={myWalletWithCards}
+      />
       <Button btnText="ADD NEW CARD" />
     </article>
   );

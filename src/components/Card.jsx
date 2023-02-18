@@ -12,6 +12,8 @@ function Card({
   transformY,
   textColor,
   onClick,
+  deleteCard,
+  removeCardFromWallet,
 }) {
   return (
     <article
@@ -22,6 +24,9 @@ function Card({
         transform: transformY,
       }}
     >
+      {deleteCard && (
+        <button onClick={removeCardFromWallet}>Delete Card</button>
+      )}
       <section className="card-symbols">
         <img
           src={wifiLogo ? wifiLogo : 'public/images/noun_wifi_159786 1.svg'}
@@ -32,11 +37,9 @@ function Card({
           alt="Bitcoin"
         />
       </section>
-
       <section className="card-chip">
         <img src={chipLogo ? chipLogo : 'public/images/chip.svg'} alt="Chip" />
       </section>
-
       <section className="card-holder__section">
         <section className="card-number" style={{ color: textColor }}>
           <h2>{cardNumber}</h2>

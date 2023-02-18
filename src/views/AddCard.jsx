@@ -4,7 +4,7 @@ import Top from '../components/Top';
 import Card from '../components/Card';
 import CardForm from '../components/CardForm';
 
-function AddCard({ addCard }) {
+function AddCard({ addCardToWallet }) {
   const [vendorLogo, setVendorLogo] = useState('bitcoin');
   const [background, setBackground] = useState('#D0D0D0');
   const [chip, setChip] = useState('chip 2');
@@ -19,7 +19,7 @@ function AddCard({ addCard }) {
     }
   }
 
-  function changeBackgroundCard(card) {
+  function switchCard(card) {
     if (card === 'defaultCard') {
       setBackground('#D0D0D0');
       setChip('chip 2');
@@ -67,9 +67,9 @@ function AddCard({ addCard }) {
         chip={chip}
         wifi={wifi}
         textColor={textColor}
-        changeBackgroundCard={changeBackgroundCard}
+        switchCard={switchCard}
         changeCardHandler={changeCardHandler}
-        addCard={addCard}
+        addCardToWallet={addCardToWallet}
       />
     </article>
   );

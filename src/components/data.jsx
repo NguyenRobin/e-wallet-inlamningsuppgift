@@ -1,5 +1,6 @@
-const cards = [
+const myWalletWithCards = [
   {
+    id: 1,
     name: 'ROBIN NGUYEN',
     valid: '12/22',
     images: {
@@ -12,6 +13,7 @@ const cards = [
   },
 
   {
+    id: 2,
     name: 'ROBIN NGUYEN',
     valid: '10/25',
     images: {
@@ -23,6 +25,7 @@ const cards = [
     cardColor: '#8B58F9',
   },
   {
+    id: 3,
     name: 'ROBIN NGUYEN',
     valid: '10/23',
     images: {
@@ -35,4 +38,4 @@ const cards = [
   },
 ];
 
-export default cards;
+export default myWalletWithCards;
