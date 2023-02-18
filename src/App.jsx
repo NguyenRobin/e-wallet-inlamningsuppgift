@@ -7,10 +7,20 @@ import AddCard from './views/AddCard';
 function App() {
   const [wallet, setWallet] = useState(cards);
 
+  useEffect(() => {
+    const myWallet = JSON.parse(localStorage.getItem('my-wallet'));
+
+    if (myWallet) {
+      setWallet(myWallet);
+    }
+  }, []);
+
   function addCard(card) {
-    // setWallet([card, ...wallet]);
-    setWallet((prevWallet) => [...prevWallet, card]);
-    console.log(wallet);
+    if (wallet.length > 10) return;
+    // setWallet((prevWallet) => [...prevWallet, card]);
+    const newWallet = [...wallet, card];
+    setWallet(newWallet);
+    localStorage.setItem('my-wallet', JSON.stringify(newWallet));
   }
 
   return (

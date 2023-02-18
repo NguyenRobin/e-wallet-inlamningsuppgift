@@ -42,7 +42,6 @@ function CardForm({
 
   function submitHandler(event) {
     event.preventDefault();
-
     const newCard = {
       name: cardHolder,
       valid: validDate,

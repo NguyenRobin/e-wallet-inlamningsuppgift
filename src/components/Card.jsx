@@ -23,12 +23,18 @@ function Card({
       }}
     >
       <section className="card-symbols">
-        <img src={wifiLogo} alt="Wi-fi" />
-        <img src={vendorsLogo} alt="Bitcoin" />
+        <img
+          src={wifiLogo ? wifiLogo : 'public/images/noun_wifi_159786 1.svg'}
+          alt="Wi-fi"
+        />
+        <img
+          src={vendorsLogo ? vendorsLogo : 'public/images/vendor-bitcoin.svg'}
+          alt="Bitcoin"
+        />
       </section>
 
       <section className="card-chip">
-        <img src={chipLogo} alt="Chip" />
+        <img src={chipLogo ? chipLogo : 'public/images/chip.svg'} alt="Chip" />
       </section>
 
       <section className="card-holder__section">
