@@ -1,6 +1,6 @@
 const myWalletWithCards = [
   {
-    id: 1,
+    id: 0,
     name: 'ROBIN NGUYEN',
     valid: '12/22',
     images: {
@@ -10,10 +10,11 @@ const myWalletWithCards = [
     },
     cardNumber: '1234 5676 9101 1123',
     cardColor: '#222222',
+    textColor: '#fff',
   },
 
   {
-    id: 2,
+    id: 1,
     name: 'ROBIN NGUYEN',
     valid: '10/25',
     images: {
@@ -23,9 +24,10 @@ const myWalletWithCards = [
     },
     cardNumber: '1234 5676 9101 1123',
     cardColor: '#8B58F9',
+    textColor: '#fff',
   },
   {
-    id: 3,
+    id: 2,
     name: 'ROBIN NGUYEN',
     valid: '10/23',
     images: {
@@ -35,6 +37,7 @@ const myWalletWithCards = [
     },
     cardNumber: '6666 6666 6666 6666',
     cardColor: '#F33355',
+    textColor: '#fff',
   },
 ];
 

@@ -6,7 +6,7 @@ import AddCard from './views/AddCard';
 
 function App() {
   const [wallet, setWallet] = useState(myWalletWithCards);
-  const [deleteCard, setDeleteCard] = useState(false);
+
   useEffect(() => {
     const myWallet = JSON.parse(localStorage.getItem('my-wallet'));
     if (myWallet) {
@@ -15,22 +15,28 @@ function App() {
   }, []);
 
   function addCardToWallet(card) {
-    // if (wallet.length > 10) return;
-    // setWallet((prevWallet) => [...prevWallet, card]);
-    const newWallet = [...wallet, card];
-    setWallet(newWallet);
-    localStorage.setItem('my-wallet', JSON.stringify(newWallet));
+    if (wallet.length > 10) return;
+
+    setWallet((prevWallet) => {
+      const id = wallet.length;
+      const walletWithID = { id, ...card };
+      const newWalletAddedCard = [...prevWallet, walletWithID];
+      localStorage.setItem('my-wallet', JSON.stringify(newWallet));
+      return newWalletAddedCard;
+    });
   }
 
   function removeCardFromWallet(id) {
-    setWallet(wallet.filter((card) => card.id !== id));
-    console.log(wallet);
+    setWallet((prevWallet) => {
+      const newWalletRemovedCard = prevWallet.filter((card) => card.id !== id);
+      localStorage.setItem('my-wallet', JSON.stringify(newWalletRemovedCard));
+      return newWalletRemovedCard;
+    });
   }
 
   return (
     <div className="App">
       <Home
-        deleteCard={deleteCard}
         removeCardFromWallet={removeCardFromWallet}
         myWalletWithCards={wallet}
       />

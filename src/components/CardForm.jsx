@@ -18,9 +18,6 @@ function CardForm({
   const [CCV, setCCV] = useState('');
   const [vendor, setVendor] = useState('');
 
-  function checkCardNumberIsValid(event) {
-    console.log(event);
-  }
   function cardNumberHandler(event) {
     // const enteredNumber = event.target.value;
     // const checkEveryFourthCharacter = enteredNumber.match(/.{1,4}/g);
@@ -67,10 +64,10 @@ function CardForm({
         vendors: `./public/images/vendor-${vendorLogo}.svg`,
       },
       cardColor: background,
+      textColor: textColor,
     };
     addCardToWallet(newCard);
     setCardNumber('');
-    console.log(newCard);
   }
 
   return (

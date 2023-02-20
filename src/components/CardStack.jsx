@@ -3,12 +3,15 @@ import Card from './Card';
 import './CardStack.css';
 
 function CardStack({ myWalletWithCards, activeCard }) {
+  console.log(myWalletWithCards);
   return (
     <section className="card-wallet">
       {myWalletWithCards.map((card, index) => (
         <Card
           // onClick={() => clickedCard(card)}
-          onClick={() => activeCard(card)}
+          // myWalletWithCards={myWalletWithCards}
+          textColor={card.textColor}
+          activeCard={() => activeCard(card)}
           className={card}
           key={index}
           wifiLogo={card.images.wifi}
@@ -18,7 +21,6 @@ function CardStack({ myWalletWithCards, activeCard }) {
           vendorsLogo={card.images.vendors}
           cardNumber={card.cardNumber}
           cardColor={card.cardColor}
-          index={index}
           transformY={`translateY(${
             myWalletWithCards.length <= 3
               ? index * 20

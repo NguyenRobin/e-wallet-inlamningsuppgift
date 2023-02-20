@@ -8,24 +8,25 @@ function Card({
   valid,
   cardNumber,
   cardColor,
-  index,
   transformY,
   textColor,
-  onClick,
-  deleteCard,
+  activeCard,
+  deleteCardText,
   removeCardFromWallet,
 }) {
   return (
     <article
-      onClick={onClick}
+      onClick={activeCard}
       className="card"
       style={{
         backgroundColor: cardColor,
         transform: transformY,
       }}
     >
-      {deleteCard && (
-        <button onClick={removeCardFromWallet}>Delete Card</button>
+      {deleteCardText && (
+        <p style={{ color: '#fff' }} onClick={removeCardFromWallet}>
+          Delete Card
+        </p>
       )}
       <section className="card-symbols">
         <img
