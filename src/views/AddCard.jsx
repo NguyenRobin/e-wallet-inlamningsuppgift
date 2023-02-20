@@ -55,7 +55,7 @@ function AddCard({ addCardToWallet }) {
         textColor={textColor}
         wifiLogo={`./public/images/noun_wifi_159786 ${wifi}.svg`}
         vendorsLogo={`./public/images/vendor-${vendorLogo}.svg`}
-        chipLogo={`public/images/${chip}.svg`}
+        chipLogo={`./public/images/${chip}.svg`}
         cardNumber="XXXX XXXX XXXX XXXX"
         name="FIRSTNAME LASTNAME"
         valid="MM/YY"

@@ -21,7 +21,7 @@ function App() {
       const id = wallet.length;
       const walletWithID = { id, ...card };
       const newWalletAddedCard = [...prevWallet, walletWithID];
-      localStorage.setItem('my-wallet', JSON.stringify(newWallet));
+      localStorage.setItem('my-wallet', JSON.stringify(newWalletAddedCard));
       return newWalletAddedCard;
     });
   }

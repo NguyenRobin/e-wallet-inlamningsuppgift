@@ -19,13 +19,6 @@ function CardForm({
   const [vendor, setVendor] = useState('');
 
   function cardNumberHandler(event) {
-    // const enteredNumber = event.target.value;
-    // const checkEveryFourthCharacter = enteredNumber.match(/.{1,4}/g);
-    // const correctFormat = checkEveryFourthCharacter
-    //   ? checkEveryFourthCharacter.join('hoea ')
-    //   : enteredNumber;
-    // const chunks = splitTest.match(/.{1,4}/g); // break into four-digit chunks
-    // const formattedValue = chunks ? chunks.join(' ') : splitTest;
     setCardNumber(event.target.value);
   }
 
@@ -33,12 +26,7 @@ function CardForm({
     setCardHolder(event.target.value);
   }
 
-  function validDateHandler(event) {
-    if (event.target.value.length > 1 && event.target.value.length <= 2) {
-      // event.target.value += '/';
-      setValidDate(event.target.value + '/');
-    }
-  }
+  function validDateHandler(event) {}
 
   function CCVHandler(event) {
     setCCV(event.target.value);
@@ -51,6 +39,8 @@ function CardForm({
   }
 
   function submitHandler(event) {
+    if (vendor === '' || vendor === 'defaultCard') return;
+
     event.preventDefault();
     const newCard = {
       name: cardHolder,
@@ -59,8 +49,8 @@ function CardForm({
       CCV: CCV,
       vendor: vendor,
       images: {
-        wifi: `public/images/noun_wifi_159786 ${wifi}.svg`,
-        chip: `public/images/${chip}.svg`,
+        wifi: `./public/images/noun_wifi_159786 ${wifi}.svg`,
+        chip: `./public/images/${chip}.svg`,
         vendors: `./public/images/vendor-${vendorLogo}.svg`,
       },
       cardColor: background,
@@ -76,11 +66,11 @@ function CardForm({
         <label htmlFor="text">CARD NUMBER</label>
         <input
           onChange={cardNumberHandler}
-          value={cardNumber.split('-').join()}
+          value={cardNumber}
           placeholder="1234 5676 9101 1123"
           type="text"
-          // minLength="16"
-          maxLength="20"
+          minLength="16"
+          maxLength="16"
           pattern="[0-9]*"
         />
       </section>
@@ -125,14 +115,13 @@ function CardForm({
       <section className="form-vendors">
         <label htmlFor="vendor-select">VENDOR</label>
         <select
+          // defaultValue="defaultCard"
           value={vendor}
           onChange={vendorHandler}
           name="vendors"
           id="vendor-select"
         >
-          <option value="defaultCard" readOnly>
-            --Please choose an option--
-          </option>
+          <option value="defaultCard">--Please choose an option--</option>
           <option value="bitcoin">BITCOIN INC</option>
           <option value="ninja">NINJA BANK</option>
           <option value="blockchain">BLOCK CHAIN INC</option>
