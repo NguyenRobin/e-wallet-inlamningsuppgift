@@ -4,11 +4,12 @@ import './Home.css';
 import Card from '../components/Card';
 import CardStack from '../components/CardStack';
 import Button from '../components/Button';
+import { useNavigate } from 'react-router-dom';
 
 function Home({ myWalletWithCards, removeCardFromWallet }) {
   const [myCard, setMyCard] = useState(myWalletWithCards);
   const [deleteCardText, setDeleteCardText] = useState(false);
-
+  const navigate = useNavigate();
   function activeCard(card) {
     setMyCard(card);
     console.log(card);
@@ -17,6 +18,10 @@ function Home({ myWalletWithCards, removeCardFromWallet }) {
   function isDeleted() {
     removeCardFromWallet(myCard.id);
     setMyCard({});
+  }
+
+  function goToAddNewCard() {
+    navigate('/addCard');
   }
 
   return (
@@ -45,7 +50,11 @@ function Home({ myWalletWithCards, removeCardFromWallet }) {
         activeCard={activeCard}
         myWalletWithCards={myWalletWithCards}
       />
-      <Button btnText="ADD NEW CARD" />
+      <Button
+        type="button"
+        onClick={goToAddNewCard}
+        btnTextTitle="ADD NEW CARD"
+      />
     </article>
   );
 }

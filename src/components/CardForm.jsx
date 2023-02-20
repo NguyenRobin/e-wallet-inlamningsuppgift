@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './CardForm.css';
 import Button from './Button';
-
+import { useNavigate } from 'react-router-dom';
 function CardForm({
   addCardToWallet,
   changeCardHandler,
@@ -17,6 +17,12 @@ function CardForm({
   const [validDate, setValidDate] = useState('');
   const [CCV, setCCV] = useState('');
   const [vendor, setVendor] = useState('');
+
+  const navigate = useNavigate();
+
+  function goToWalletAfterCardAdded() {
+    navigate('/');
+  }
 
   function cardNumberHandler(event) {
     setCardNumber(event.target.value);
@@ -57,6 +63,7 @@ function CardForm({
       textColor: textColor,
     };
     addCardToWallet(newCard);
+    goToWalletAfterCardAdded();
     setCardNumber('');
   }
 
@@ -115,7 +122,6 @@ function CardForm({
       <section className="form-vendors">
         <label htmlFor="vendor-select">VENDOR</label>
         <select
-          // defaultValue="defaultCard"
           value={vendor}
           onChange={vendorHandler}
           name="vendors"
@@ -128,7 +134,11 @@ function CardForm({
           <option value="evil">EVIL CORP</option>
         </select>
       </section>
-      <Button btnText="ADD CARD" className="btn__add-card" />
+      <Button
+        // onClick={goToWalletAfterCardAdded}
+        btnTextTitle="ADD CARD"
+        className="btn__add-card"
+      />
     </form>
   );
 }

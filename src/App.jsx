@@ -3,7 +3,7 @@ import './App.css';
 import myWalletWithCards from './components/data';
 import Home from './views/Home';
 import AddCard from './views/AddCard';
-
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 function App() {
   const [wallet, setWallet] = useState(myWalletWithCards);
 
@@ -35,13 +35,25 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <Home
-        removeCardFromWallet={removeCardFromWallet}
-        myWalletWithCards={wallet}
-      />
-      <AddCard addCardToWallet={addCardToWallet} />
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Home
+                removeCardFromWallet={removeCardFromWallet}
+                myWalletWithCards={wallet}
+              />
+            }
+          />
+          <Route
+            path="/addcard"
+            element={<AddCard addCardToWallet={addCardToWallet} />}
+          />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 

@@ -3,13 +3,10 @@ import Card from './Card';
 import './CardStack.css';
 
 function CardStack({ myWalletWithCards, activeCard }) {
-  console.log(myWalletWithCards);
   return (
     <section className="card-wallet">
       {myWalletWithCards.map((card, index) => (
         <Card
-          // onClick={() => clickedCard(card)}
-          // myWalletWithCards={myWalletWithCards}
           textColor={card.textColor}
           activeCard={() => activeCard(card)}
           className={card}

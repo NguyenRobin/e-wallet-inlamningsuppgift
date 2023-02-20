@@ -1,7 +1,11 @@
 import React from 'react';
 import './Button.css';
-function Button({ btnText, className }) {
-  return <button className={className}>{btnText}</button>;
+function Button({ btnTextTitle, className, onClick }) {
+  return (
+    <button onClick={onClick} className={className}>
+      {btnTextTitle}
+    </button>
+  );
 }
 
 export default Button;
