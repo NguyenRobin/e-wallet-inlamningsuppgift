@@ -1,12 +1,12 @@
 import React from 'react';
 import './Top.css';
 
-function Top({ title, type }) {
+function Top({ title, textTitle }) {
   return (
     <article className="top-section">
       <section className="wallet">
         <h1>{title}</h1>
-        <p>{type}</p>
+        <p>{textTitle}</p>
       </section>
     </article>
   );

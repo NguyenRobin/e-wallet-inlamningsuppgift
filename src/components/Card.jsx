@@ -12,7 +12,7 @@ function Card({
   textColor,
   activeCard,
   deleteCardText,
-  removeCardFromWallet,
+  deleteCardFromWallet,
 }) {
   return (
     <article
@@ -24,7 +24,7 @@ function Card({
       }}
     >
       {deleteCardText && (
-        <p style={{ color: '#fff' }} onClick={removeCardFromWallet}>
+        <p style={{ color: '#fff' }} onClick={deleteCardFromWallet}>
           Delete Card
         </p>
       )}

@@ -4,7 +4,6 @@ import Button from './Button';
 import { useNavigate } from 'react-router-dom';
 function CardForm({
   addCardToWallet,
-  changeCardHandler,
   switchCard,
   vendorLogo,
   background,
@@ -25,29 +24,43 @@ function CardForm({
   }
 
   function cardNumberHandler(event) {
-    setCardNumber(event.target.value);
+    // OBS! Detta REGEX tog jag från stackOverFlow för att kunna formatera kortet snyggt
+    const userInputCardNumber = event.target.value;
+    const card = userInputCardNumber
+      .replace(/\D/g, '') // Tar bort alla tecken som inte är siffor
+      .match(/.{1,4}/g) // Delar upp längden av variabeln  i 4 grupper
+      .join(' '); // lägger till ett mellanslag i varje grupp
+    setCardNumber(card);
   }
 
   function cardHolderHandler(event) {
-    setCardHolder(event.target.value);
+    setCardHolder(event.target.value.toUpperCase());
   }
 
-  function validDateHandler(event) {}
+  function validDateHandler(event) {
+    setValidDate(event.target.value);
+  }
 
   function CCVHandler(event) {
-    setCCV(event.target.value);
+    setCCV(event.target.value.trim());
   }
 
   function vendorHandler(event) {
     setVendor(event.target.value);
-    changeCardHandler(event.target.value);
     switchCard(event.target.value);
   }
 
   function submitHandler(event) {
-    if (vendor === '' || vendor === 'defaultCard') return;
-
     event.preventDefault();
+    if (
+      cardNumber === '' ||
+      cardHolder === '' ||
+      validDate === '' ||
+      CCV === '' ||
+      validDate === '' ||
+      vendor === 'defaultCard'
+    )
+      return;
     const newCard = {
       name: cardHolder,
       valid: validDate,
@@ -64,7 +77,6 @@ function CardForm({
     };
     addCardToWallet(newCard);
     goToWalletAfterCardAdded();
-    setCardNumber('');
   }
 
   return (
@@ -76,9 +88,9 @@ function CardForm({
           value={cardNumber}
           placeholder="1234 5676 9101 1123"
           type="text"
-          minLength="16"
-          maxLength="16"
-          pattern="[0-9]*"
+          minLength="19"
+          maxLength="19"
+          // pattern="[0-9]*"
         />
       </section>
 
@@ -115,6 +127,7 @@ function CardForm({
             type="text"
             minLength="3"
             maxLength="3"
+            pattern="[0-9]*"
           />
         </section>
       </section>
@@ -134,11 +147,7 @@ function CardForm({
           <option value="evil">EVIL CORP</option>
         </select>
       </section>
-      <Button
-        // onClick={goToWalletAfterCardAdded}
-        btnTextTitle="ADD CARD"
-        className="btn__add-card"
-      />
+      <Button btnTextTitle="ADD CARD" className="btn__add-card" />
     </form>
   );
 }

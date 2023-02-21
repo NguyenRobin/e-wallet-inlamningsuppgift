@@ -26,7 +26,7 @@ function App() {
     });
   }
 
-  function removeCardFromWallet(id) {
+  function deleteCardFromWallet(id) {
     setWallet((prevWallet) => {
       const newWalletRemovedCard = prevWallet.filter((card) => card.id !== id);
       localStorage.setItem('my-wallet', JSON.stringify(newWalletRemovedCard));
@@ -42,7 +42,7 @@ function App() {
             path="/"
             element={
               <Home
-                removeCardFromWallet={removeCardFromWallet}
+                deleteCardFromWallet={deleteCardFromWallet}
                 myWalletWithCards={wallet}
               />
             }
