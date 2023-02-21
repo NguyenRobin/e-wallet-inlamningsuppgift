@@ -26,11 +26,11 @@ function CardForm({
   function cardNumberHandler(event) {
     // OBS! Detta REGEX tog jag från stackOverFlow för att kunna formatera kortet snyggt
     const userInputCardNumber = event.target.value;
-    const card = userInputCardNumber
+    const cardNumberFormat = userInputCardNumber
       .replace(/\D/g, '') // Tar bort alla tecken som inte är siffor
       .match(/.{1,4}/g) // Delar upp längden av variabeln  i 4 grupper
       .join(' '); // lägger till ett mellanslag i varje grupp
-    setCardNumber(card);
+    setCardNumber(cardNumberFormat);
   }
 
   function cardHolderNameHandler(event) {
