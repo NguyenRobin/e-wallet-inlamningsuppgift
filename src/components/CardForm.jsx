@@ -6,16 +6,16 @@ function CardForm({
   addCardToWallet,
   switchCard,
   vendorLogo,
-  background,
-  chip,
-  wifi,
+  backgroundCard,
+  chipLogo,
+  wifiLogo,
   textColor,
 }) {
   const [cardNumber, setCardNumber] = useState('');
-  const [cardHolder, setCardHolder] = useState('');
-  const [validDate, setValidDate] = useState('');
-  const [CCV, setCCV] = useState('');
-  const [vendor, setVendor] = useState('');
+  const [cardHolderName, setCardHolderName] = useState('');
+  const [cardValidDate, setCardValidDate] = useState('');
+  const [cardCCV, setCardCCV] = useState('');
+  const [cardVendor, setCardVendor] = useState('defaultCard');
 
   const navigate = useNavigate();
 
@@ -33,20 +33,20 @@ function CardForm({
     setCardNumber(card);
   }
 
-  function cardHolderHandler(event) {
-    setCardHolder(event.target.value.toUpperCase());
+  function cardHolderNameHandler(event) {
+    setCardHolderName(event.target.value.toUpperCase());
   }
 
-  function validDateHandler(event) {
-    setValidDate(event.target.value);
+  function cardValidDateHandler(event) {
+    setCardValidDate(event.target.value);
   }
 
-  function CCVHandler(event) {
-    setCCV(event.target.value.trim());
+  function cardCCVHandler(event) {
+    setCardCCV(event.target.value.trim());
   }
 
-  function vendorHandler(event) {
-    setVendor(event.target.value);
+  function cardVendorHandler(event) {
+    setCardVendor(event.target.value);
     switchCard(event.target.value);
   }
 
@@ -54,25 +54,25 @@ function CardForm({
     event.preventDefault();
     if (
       cardNumber === '' ||
-      cardHolder === '' ||
-      validDate === '' ||
-      CCV === '' ||
-      validDate === '' ||
-      vendor === 'defaultCard'
+      cardHolderName === '' ||
+      cardValidDate === '' ||
+      cardCCV === '' ||
+      cardValidDate === '' ||
+      cardVendor === 'defaultCard'
     )
       return;
     const newCard = {
-      name: cardHolder,
-      valid: validDate,
+      name: cardHolderName,
+      valid: cardValidDate,
       cardNumber: cardNumber,
-      CCV: CCV,
-      vendor: vendor,
+      cardCCV: cardCCV,
+      vendor: cardVendor,
       images: {
-        wifi: `./public/images/noun_wifi_159786 ${wifi}.svg`,
-        chip: `./public/images/${chip}.svg`,
+        wifi: `./public/images/noun_wifi_159786 ${wifiLogo}.svg`,
+        chip: `./public/images/${chipLogo}.svg`,
         vendors: `./public/images/vendor-${vendorLogo}.svg`,
       },
-      cardColor: background,
+      cardColor: backgroundCard,
       textColor: textColor,
     };
     addCardToWallet(newCard);
@@ -97,8 +97,8 @@ function CardForm({
       <section className="form-cardholder">
         <label htmlFor="name">CARDHOLDER NAME</label>
         <input
-          onChange={cardHolderHandler}
-          value={cardHolder}
+          onChange={cardHolderNameHandler}
+          value={cardHolderName}
           placeholder="ROBIN NGUYEN"
           type="text"
           minLength="2"
@@ -110,8 +110,8 @@ function CardForm({
         <section className="form-card-valid">
           <label htmlFor="">VALID THRU</label>
           <input
-            onChange={validDateHandler}
-            value={validDate}
+            onChange={cardValidDateHandler}
+            value={cardValidDate}
             maxLength="5"
             placeholder="12/25"
             type="text"
@@ -121,8 +121,8 @@ function CardForm({
         <section className="form-card-CCV">
           <label htmlFor="">CCV</label>
           <input
-            onChange={CCVHandler}
-            value={CCV}
+            onChange={cardCCVHandler}
+            value={cardCCV}
             placeholder="686"
             type="text"
             minLength="3"
@@ -135,8 +135,8 @@ function CardForm({
       <section className="form-vendors">
         <label htmlFor="vendor-select">VENDOR</label>
         <select
-          value={vendor}
-          onChange={vendorHandler}
+          value={cardVendor}
+          onChange={cardVendorHandler}
           name="vendors"
           id="vendor-select"
         >

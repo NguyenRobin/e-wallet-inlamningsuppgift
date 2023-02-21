@@ -10,13 +10,13 @@ function Card({
   cardColor,
   transformY,
   textColor,
-  activeCard,
+  displayActiveCard,
   deleteCardText,
   deleteCardFromWallet,
 }) {
   return (
     <article
-      onClick={activeCard}
+      onClick={displayActiveCard}
       className="card"
       style={{
         backgroundColor: cardColor,
@@ -28,18 +28,22 @@ function Card({
           Delete Card
         </p>
       )}
+
       <section className="card-symbols">
         <img
-          src={wifiLogo ? wifiLogo : 'public/images/noun_wifi_159786 1.svg'}
+          src={wifiLogo ? wifiLogo : './public/images/noun_wifi_159786 1.svg'}
           alt="Wi-fi"
         />
         <img
-          src={vendorsLogo ? vendorsLogo : 'public/images/vendor-bitcoin.svg'}
+          src={vendorsLogo ? vendorsLogo : './public/images/vendor-bitcoin.svg'}
           alt="Bitcoin"
         />
       </section>
       <section className="card-chip">
-        <img src={chipLogo ? chipLogo : 'public/images/chip.svg'} alt="Chip" />
+        <img
+          src={chipLogo ? chipLogo : './public/images/chip.svg'}
+          alt="Chip"
+        />
       </section>
       <section className="card-holder__section">
         <section className="card-number" style={{ color: textColor }}>

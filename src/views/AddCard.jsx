@@ -6,41 +6,41 @@ import CardForm from '../components/CardForm';
 
 function AddCard({ addCardToWallet }) {
   const [vendorLogo, setVendorLogo] = useState('bitcoin');
-  const [background, setBackground] = useState('#D0D0D0');
-  const [chip, setChip] = useState('chip 2');
-  const [wifi, setWifi] = useState('1');
+  const [backgroundCard, setBackgroundCard] = useState('#D0D0D0');
+  const [chipLogo, setChipLogo] = useState('chip 2');
+  const [wifiLogo, setWifiLogo] = useState('1');
   const [textColor, setTextColor] = useState('#000');
 
   function switchCard(card) {
     if (card === 'defaultCard') {
       setVendorLogo('bitcoin');
-      setBackground('#D0D0D0');
-      setChip('chip 2');
-      setWifi('1');
+      setBackgroundCard('#D0D0D0');
+      setChipLogo('chip 2');
+      setWifiLogo('1');
       setTextColor('#000');
     } else if (card === 'bitcoin') {
-      setBackground('#ffae34');
-      setChip('chip');
+      setBackgroundCard('#ffae34');
+      setChipLogo('chip');
       setTextColor('#000');
-      setWifi('1');
+      setWifiLogo('1');
       setVendorLogo(card);
     } else if (card === 'blockchain') {
-      setBackground('#8B58F9');
-      setChip('chip');
+      setBackgroundCard('#8B58F9');
+      setChipLogo('chip');
       setTextColor('#fff');
-      setWifi('2');
+      setWifiLogo('2');
       setVendorLogo(card);
     } else if (card === 'evil') {
-      setBackground('#F33355');
-      setChip('chip');
+      setBackgroundCard('#F33355');
+      setChipLogo('chip');
       setTextColor('#fff');
-      setWifi('2');
+      setWifiLogo('2');
       setVendorLogo(card);
     } else if (card === 'ninja') {
-      setBackground('#222222');
-      setChip('chip');
+      setBackgroundCard('#222222');
+      setChipLogo('chip');
       setTextColor('#fff');
-      setWifi('2');
+      setWifiLogo('2');
       setVendorLogo(card);
     }
   }
@@ -50,19 +50,19 @@ function AddCard({ addCardToWallet }) {
       <Top title="ADD A NEW BANK CARD" textTitle="NEW CARD" />
       <Card
         textColor={textColor}
-        wifiLogo={`./public/images/noun_wifi_159786 ${wifi}.svg`}
+        wifiLogo={`./public/images/noun_wifi_159786 ${wifiLogo}.svg`}
         vendorsLogo={`./public/images/vendor-${vendorLogo}.svg`}
-        chipLogo={`./public/images/${chip}.svg`}
+        chipLogo={`./public/images/${chipLogo}.svg`}
         cardNumber="XXXX XXXX XXXX XXXX"
         name="FIRSTNAME LASTNAME"
         valid="MM/YY"
-        cardColor={background}
+        cardColor={backgroundCard}
       />
       <CardForm
         vendorLogo={vendorLogo}
-        background={background}
-        chip={chip}
-        wifi={wifi}
+        backgroundCard={backgroundCard}
+        chipLogo={chipLogo}
+        wifiLogo={wifiLogo}
         textColor={textColor}
         switchCard={switchCard}
         addCardToWallet={addCardToWallet}

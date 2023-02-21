@@ -7,18 +7,18 @@ import Button from '../components/Button';
 import { useNavigate } from 'react-router-dom';
 
 function Home({ myWalletWithCards, deleteCardFromWallet }) {
-  const [myCard, setMyCard] = useState(myWalletWithCards);
+  const [activeCard, setActiveCard] = useState(myWalletWithCards);
   const [deleteCardText, setDeleteCardText] = useState(false);
   const navigate = useNavigate();
 
-  function activeCard(card) {
-    setMyCard(card);
-    console.log(card);
+  function displayActiveCard(activeCard) {
+    setActiveCard(activeCard);
+    console.log(activeCard);
   }
 
   function deleteActiveCard() {
-    deleteCardFromWallet(myCard.id);
-    setMyCard({});
+    deleteCardFromWallet(activeCard.id);
+    setActiveCard({});
   }
 
   function goToAddNewCard() {
@@ -32,15 +32,16 @@ function Home({ myWalletWithCards, deleteCardFromWallet }) {
       <Card
         deleteCardFromWallet={deleteActiveCard}
         deleteCardText={() => setDeleteCardText(true)}
-        className={myCard.card}
-        wifiLogo={myCard.images?.wifi}
-        vendorsLogo={myCard.images?.vendors}
-        chipLogo={myCard.images?.chip}
-        cardNumber={myCard.cardNumber ? myCard.cardNumber : 'PICK A CARD'}
-        name={myCard.name}
-        valid={myCard.valid}
-        cardColor={myCard.cardColor}
-        textColor={myCard.textColor}
+        wifiLogo={activeCard.images?.wifi}
+        vendorsLogo={activeCard.images?.vendors}
+        chipLogo={activeCard.images?.chip}
+        cardNumber={
+          activeCard.cardNumber ? activeCard.cardNumber : 'PICK A CARD'
+        }
+        name={activeCard.name}
+        valid={activeCard.valid}
+        cardColor={activeCard.cardColor}
+        textColor={activeCard.textColor}
       />
     );
 
@@ -49,7 +50,7 @@ function Home({ myWalletWithCards, deleteCardFromWallet }) {
       <Top title="E-WALLET" textTitle="ACTIVE CARD" />
       {displayCard}
       <CardStack
-        activeCard={activeCard}
+        displayActiveCard={displayActiveCard}
         myWalletWithCards={myWalletWithCards}
       />
       <Button onClick={goToAddNewCard} btnTextTitle="ADD NEW CARD" />

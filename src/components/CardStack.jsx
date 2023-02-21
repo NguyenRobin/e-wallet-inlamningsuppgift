@@ -1,13 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Card from './Card';
 import './CardStack.css';
 
-function CardStack({ myWalletWithCards, activeCard }) {
+function CardStack({ myWalletWithCards, displayActiveCard }) {
   const cards = myWalletWithCards.map((card, index) => (
     <Card
       textColor={card.textColor}
-      activeCard={() => activeCard(card)}
-      className={card}
+      displayActiveCard={() => displayActiveCard(card)}
       key={index}
       wifiLogo={card.images.wifi}
       chipLogo={card.images.chip}

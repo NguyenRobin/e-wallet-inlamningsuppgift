@@ -4,6 +4,7 @@ import myWalletWithCards from './components/data';
 import Home from './views/Home';
 import AddCard from './views/AddCard';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
 function App() {
   const [wallet, setWallet] = useState(myWalletWithCards);
 
@@ -28,9 +29,9 @@ function App() {
 
   function deleteCardFromWallet(id) {
     setWallet((prevWallet) => {
-      const newWalletRemovedCard = prevWallet.filter((card) => card.id !== id);
-      localStorage.setItem('my-wallet', JSON.stringify(newWalletRemovedCard));
-      return newWalletRemovedCard;
+      const newWalletDeletedCard = prevWallet.filter((card) => card.id !== id);
+      localStorage.setItem('my-wallet', JSON.stringify(newWalletDeletedCard));
+      return newWalletDeletedCard;
     });
   }
 
